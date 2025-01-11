@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Message Sender</title>
+</head>
+<body>
+    <form method="POST">
+        <label for="channel_id">Channel ID:</label>
+        <input type="text" name="channel_id" required><br><br>
+        
+        <label for="message">Message:</label>
+        <input type="text" name="message" required><br><br>
+        
+        <label for="type">Message Type:</label>
+        <select name="type" required>
+            <option value="1">Spam</option>
+            <option value="2">Single</option>
+        </select><br><br>
+        
+        <label for="spam_amount">Spam Amount:</label>
+        <input type="number" name="spam_amount" min="1" value="1"><br><br>
+        
+        <button type="submit">Send</button>
+    </form>
+
+    <h1>{{ feedback if feedback else "Waiting for input..." }}</h1>
+</body>
+</html>
