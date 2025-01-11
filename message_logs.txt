@@ -1,0 +1,23 @@
+2025-01-11 23:20:20,189 -  * Debugger is active!
+2025-01-11 23:20:20,192 -  * Debugger PIN: 102-057-550
+2025-01-11 23:20:24,925 - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-01-11 23:20:24,925 - [33mPress CTRL+C to quit[0m
+2025-01-11 23:20:24,926 -  * Restarting with stat
+2025-01-11 23:20:25,258 -  * Debugger is active!
+2025-01-11 23:20:25,260 -  * Debugger PIN: 102-057-550
+2025-01-11 23:20:31,663 - Request from IP: 127.0.0.1, Channel ID: 1312549173895233546, Message: 12, Type: 1, Spam Amount: 1
+2025-01-11 23:20:32,090 - Spam Feedback: 1. Message sent successfully!
+2025-01-11 23:20:32,095 - 127.0.0.1 - - [11/Jan/2025 23:20:32] "POST / HTTP/1.1" 200 -
+2025-01-11 23:20:38,621 - Request from IP: 127.0.0.1, Channel ID: 1312549173895233546, Message: 12, Type: 1, Spam Amount: 1
+2025-01-11 23:20:38,942 - Spam Feedback: 1. Message sent successfully!
+2025-01-11 23:20:38,943 - 127.0.0.1 - - [11/Jan/2025 23:20:38] "POST / HTTP/1.1" 200 -
+2025-01-11 23:21:00,100 - Request from IP: 127.0.0.1, Channel ID: 1312549173895233546, Message: hfh, Type: 2, Spam Amount: 1
+2025-01-11 23:21:00,391 - Single Message Feedback: Message sent successfully!
+2025-01-11 23:21:00,391 - 127.0.0.1 - - [11/Jan/2025 23:21:00] "POST / HTTP/1.1" 200 -
+2025-01-11 23:21:41,080 - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-01-11 23:21:41,080 - [33mPress CTRL+C to quit[0m
+2025-01-11 23:21:41,081 -  * Restarting with stat
+2025-01-11 23:21:41,425 -  * Debugger is active!
+2025-01-11 23:21:41,428 -  * Debugger PIN: 102-057-550

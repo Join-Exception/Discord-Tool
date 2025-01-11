@@ -4,27 +4,152 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Message Sender</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            color: white;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-image: url('https://imgs.search.brave.com/JAGCT3IS-WEtqRjFbbA5UF2SYX7g2GibBf10oIHLxqM/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93YWxs/cGFwZXJiYXQuY29t/L2ltZy8zMzcyMzQt/d2FsbHBhcGVyLW9m/LWJpbmFyeS1leWUt/dGVjaG5vbG9neS1i/YWNrZ3JvdW5kLWhk/LWltYWdlLmpwZw');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        /* Dark overlay effect */
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);  /* 50% opacity black overlay */
+            z-index: 1;
+        }
+
+        .main {
+            position: relative;
+            z-index: 100; /* Ensures the content is on top of the overlay */
+        }
+
+        .container {
+            background-color: rgba(57, 119, 148, 0.762);  /* Slight opacity to make the form stand out */
+            padding: 35px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+        }
+
+        label {
+            font-size: 16px;
+            margin-bottom: 5px;
+            display: block;
+            text-align: left;
+        }
+
+        input {
+            width: 82.5%;
+            padding: 10px;
+            margin-bottom: 15px;
+            font-size: 14px;
+            border: 1px solid #000000ad;
+            border-radius: 5px;
+        }
+
+        select {
+            width: 90%;
+            padding: 10px;
+            margin-bottom: 15px;
+            font-size: 14px;
+            border: 1px solid #000000ad;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 15px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .feedback {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #e9f7f9;
+            border: 1px solid #d1ecf1;
+            color: #155724;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .error {
+            background-color: #f8d7da;
+            border-color: #f5c6cb;
+            color: #721c24;
+        }
+
+        /* Enhanced rainbow text effect */
+        .rainbow-text {
+            background-image: linear-gradient(to left, violet, indigo, blue, green, yellow, orange, red);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: 40px; /* Increased size */
+            font-weight: bold; /* Added boldness for more impact */
+            background-size: 400% 400%; /* Make the gradient larger */
+            animation: rainbow 5s ease infinite; /* Add animation to make it move */
+            margin-bottom: 20px;
+        }
+
+        @keyframes rainbow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+    </style>
 </head>
 <body>
-    <form method="POST">
-        <label for="channel_id">Channel ID:</label>
-        <input type="text" name="channel_id" required><br><br>
-        
-        <label for="message">Message:</label>
-        <input type="text" name="message" required><br><br>
-        
-        <label for="type">Message Type:</label>
-        <select name="type" required>
-            <option value="1">Spam</option>
-            <option value="2">Single</option>
-        </select><br><br>
-        
-        <label for="spam_amount">Spam Amount:</label>
-        <input type="number" name="spam_amount" min="1" value="1"><br><br>
-        
-        <button type="submit">Send</button>
-    </form>
+    <div class="main">
+        <div class="container">
+            <h1 class="rainbow-text">Discord Tool</h1>
+            <form method="POST">
+                <label for="channel_id">Channel ID:</label>
+                <input type="text" name="channel_id" required><br><br>
+                
+                <label for="message">Message:</label>
+                <input type="text" name="message" required><br><br>
+                
+                <label for="type">Message Type:</label>
+                <select name="type" required>
+                    <option value="1">Spam</option>
+                    <option value="2">Single</option>
+                </select><br><br>
+                
+                <label for="spam_amount">Spam Amount:</label>
+                <input type="number" name="spam_amount" min="1" value="1"><br><br>
+                
+                <button type="submit">Send</button>
+            </form>
 
-    <h1>{{ feedback if feedback else "Waiting for input..." }}</h1>
+            {% if feedback %}
+                <div class="feedback">
+                    <p>{{ feedback }}</p>
+                </div>
+            {% endif %}
+        </div>
+    </div>
 </body>
 </html>
