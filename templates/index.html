@@ -20,7 +20,6 @@
             position: relative;
         }
 
-        /* Dark overlay effect */
         body::before {
             content: "";
             position: absolute;
@@ -28,17 +27,17 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.5);  /* 50% opacity black overlay */
+            background: rgba(0, 0, 0, 0.5);
             z-index: 1;
         }
 
         .main {
             position: relative;
-            z-index: 100; /* Ensures the content is on top of the overlay */
+            z-index: 100;
         }
 
         .container {
-            background-color: rgba(57, 119, 148, 0.762);  /* Slight opacity to make the form stand out */
+            background-color: rgba(57, 119, 148, 0.762);
             padding: 35px;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -102,15 +101,14 @@
             color: #721c24;
         }
 
-        /* Enhanced rainbow text effect */
         .rainbow-text {
             background-image: linear-gradient(to left, violet, indigo, blue, green, yellow, orange, red);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            font-size: 40px; /* Increased size */
-            font-weight: bold; /* Added boldness for more impact */
-            background-size: 400% 400%; /* Make the gradient larger */
-            animation: rainbow 5s ease infinite; /* Add animation to make it move */
+            font-size: 40px;
+            font-weight: bold;
+            background-size: 400% 400%;
+            animation: rainbow 5s ease infinite;
             margin-bottom: 20px;
         }
 
@@ -131,15 +129,17 @@
                 
                 <label for="message">Message:</label>
                 <input type="text" name="message" required><br><br>
-                <label for="type">Action Type:</label>
 
+                <label for="type">Action Type:</label>
                 <select name="type" required>
                     <option value="1">Spam</option>
                 </select>
-                           
                 
                 <label for="spam_amount">Spam Amount:</label>
                 <input type="number" name="spam_amount" min="1" value="1"><br><br>
+
+                <label for="gruppe">Group:</label>
+                <input type="checkbox" name="gruppe"><br><br>
                 
                 <button type="submit">Send</button>
             </form>

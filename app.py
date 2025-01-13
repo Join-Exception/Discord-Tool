@@ -8,6 +8,7 @@ app = Flask(__name__)
 
 logging.basicConfig(filename="message_logs.txt", level=logging.INFO, format="%(asctime)s - %(message)s")
 
+gruppe = True
 
 with open("token.txt", "r") as f:
     Token = f.read().strip()
@@ -27,19 +28,21 @@ def get_headers(token):
 
 @app.route("/", methods=["GET", "POST"])
 def send_message():
+    global gruppe
     feedback = ""
 
     if request.method == "POST":
-        channel_id = request.form.get("channel_id")
+        #channel_id = request.form.get("channel_id")
+        channel_id = 1327377295295643758
         message = request.form.get("message")
         msg_type = request.form.get("type")
         spam_amount = request.form.get("spam_amount", 1)
+        gruppe = request.form.get("gruppe") == "on"
 
-    
         user_ip = request.remote_addr
-        logging.info(f"Request from IP: {user_ip}, Channel ID: {channel_id}, Message: {message}, Type: {msg_type}, Spam Amount: {spam_amount}")
+        logging.info(f"Request from IP: {user_ip}, Channel ID: {channel_id}, Message: {message}, Type: {msg_type}, Spam Amount: {spam_amount}, Gruppe: {gruppe}")
 
-        server = f"https://discord.com/api/v10/channels/{channel_id}/messages"
+        server = f"https://discord.com/api/v9/channels/{channel_id}/messages"
         message_json = {"content": message}
 
         current_token = get_current_token()
@@ -54,11 +57,15 @@ def send_message():
                 elif response.status_code == 429:
                     all_feedback.append(f"Rate limited. Retrying after 3 seconds.")
                     logging.info(f"Rate limited. Retrying after 3 seconds.")
-                    time.sleep(3)
                     spam_amount -= 1
-                    current_token = Token2 if current_token == Token else Token
-                    logging.info(f"Switched to token: {current_token}")
+                    time.sleep(3)
+                    if gruppe == True:
+                        if current_token == Token2:
+                            current_token = Token
+                        else:
+                            current_token = Token2
 
+                    logging.info(f"Switched to token: {current_token}")
                 else:
                     all_feedback.append(f"Error {response.status_code}: {response.text}")
 
